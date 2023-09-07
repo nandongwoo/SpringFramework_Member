@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 반드시 작성! -->
+<mapper namespace="Member">
+    <insert id="save" parameterType="com.icia.member.dto.MemberDTO">
+        insert into member_table(memberEmail, memberPassword, memberName, memberBirth, memberMobile)
+            values (#{memberEmail}, #{memberPassword}, #{memberName}, #{memberBirth}, #{memberMobile})
+    </insert>
+
+    <select id="login" parameterType="com.icia.member.dto.MemberDTO" resultType="com.icia.member.dto.MemberDTO">
+        select * from member_table where memberEmail= #{memberEmail} and memberPassword = #{memberPassword}
+    </select>
+
+
+    <select id="findList" parameterType="com.icia.member.dto.MemberDTO" resultType="com.icia.member.dto.MemberDTO">
+        select * from member_table
+    </select>
+    
+    <delete id="delete" parameterType="Long">
+        delete from member_table where id = #{id}
+    </delete>
+
+    <select id="findById" parameterType="Long" resultType="com.icia.member.dto.MemberDTO">
+        select * from member_table where id = #{id}
+    </select>
+
+    <select id="findByEmail" parameterType="String" resultType="com.icia.member.dto.MemberDTO">
+        select * from member_table where memberEmail=#{memberEmail}
+    </select>
+
+    <update id="update" parameterType="com.icia.member.dto.MemberDTO">
+        update member_table set memberName=#{memberName}, memberMobile=#{memberMobile} where id=#{id}
+    </update>
+
+</mapper>
