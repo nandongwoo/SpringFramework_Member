@@ -78,8 +78,13 @@ public class AjaxController {
         return memberDTOList;
     }
     @PostMapping(value = "/ajax11")
-    // ResponseEntity = 데이터와, 코드를 함께 둘 수있게하는 것.(오류거를 때)
+    // ResponseEntity = 데이터와, 코드를 함께 둘 수있게하는 것.(오류거를 때 - ex : try/catch문을 쓸 때)
     // ResponseBody = 데이터만 전송
+
+    // ResponseBody를 쓰는 이유 : @ResponseBody에 데이터를 담아 전송하게 되면 Spring에 있는 기능들이
+    // 필요한 형변환 등을 자동으로 해줌, 따라서 데이터를 받을 때에도 다른 형태라면 ResponseBody를 써줘야하고
+    // ResponseBody를 쓰지 않았을 경우 데이터를 주고 받을 때 형변환을 해주는 등의 추가 작업이 이루어져야함.
+
     public ResponseEntity ajax11(@ModelAttribute MemberDTO memberDTO){
         try{
             memberService.save(memberDTO);
@@ -91,5 +96,4 @@ public class AjaxController {
         // 문제가 없다면 회원리스트 데이터와 200코드를 응답으로 준다.
         return new ResponseEntity<>(memberDTOList, HttpStatus.OK);
     }
-    // @ResponseBody =
 }

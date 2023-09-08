@@ -87,11 +87,10 @@ public class MemberController {
 
     }
 
-    @GetMapping("/detail")
-    public String detail(@RequestParam("id")Long id, Model model){
+    @PostMapping("/detail")
+    public @ResponseBody MemberDTO detail(@RequestParam("memberId")Long id, Model model){
         MemberDTO memberDTO = memberService.detail(id);
-        model.addAttribute("member", memberDTO);
-        return "memberDetail";
+        return memberDTO;
     }
 
     @GetMapping("/update")
@@ -109,13 +108,14 @@ public class MemberController {
         return "memberMain";
     }
 
-    @GetMapping("/email_check")
-    public @ResponseBody String email_check (@RequestParam("memberEmail") String memberEmail){
+    @PostMapping("/email-check")
+    public @ResponseBody String emailcheck (@RequestParam("memberEmail") String memberEmail){
         MemberDTO memberDTO = memberService.findByMemberEmail(memberEmail);
         if(memberDTO == null){
             return "yes";
         }
         return "no";
     }
+
 
 }

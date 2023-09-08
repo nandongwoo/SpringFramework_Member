@@ -17,7 +17,7 @@
 <%@include file="component/nav.jsp"%>
 <form action="/save" method="post">
     email : <input id = "email" type="text" name="memberEmail" placeholder="이메일" onkeyup="email_check()"> <br>
-    <p id = check_result></p>
+    <p id = check-result></p>
     password : <input type="text" name="memberPassword" placeholder="비밀번호"> <br>
     name : <input type="text" name="memberName" placeholder="이름"> <br>
     birth : <input type="text" name="memberBirth" placeholder="생년월일(YYYY-MM-dd)"> <br>
@@ -30,10 +30,10 @@
 <script>
     const email_check = () =>{
         const email = document.getElementById("email").value;
-        const check = document.getElementById("check_result");
+        const check = document.getElementById("check-result");
         $.ajax({
-            type : "get",
-            url : "/email_check",
+            type : "post",
+            url : "/email-check",
             data : {memberEmail : email},
             success : function (res){
                 if(res=="yes"){
