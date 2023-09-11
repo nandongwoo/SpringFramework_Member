@@ -5,12 +5,6 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/main.css">
-    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-    <style>
-        table {
-            margin: auto;
-        }
-    </style>
 </head>
 <body>
 <%@include file="component/header.jsp" %>

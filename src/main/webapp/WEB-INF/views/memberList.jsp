@@ -12,57 +12,56 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/css/main.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <%@include file="component/header.jsp" %>
 <%@include file="component/nav.jsp" %>
-<div class="mt-5"></div>
-<tr>
-    <td>이메일</td>
-    <td>이름</td>
-    <td>생일</td>
-    <td>전화번호</td>
-</tr>
-<br>
+<div class="container">
+    <div id="member-list">
+        <table class="table table-bordered">
+
+            <div class="mt-5"></div>
+            <tr>
+                <td>이메일</td>
+                <td>이름</td>
+                <td>생일</td>
+                <td>전화번호</td>
+            </tr>
+            <c:forEach items="${memberList}" var="member">
+                <tr>
+                    <td>${member.memberEmail}</td>
+                    <td>${member.memberName}</td>
+                    <td>${member.memberBirth}</td>
+                    <td>${member.memberMobile}</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="detail_fn('${member.id}')">상세조회</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" onclick="delete_fn('${member.id}')">삭제</button>
+                    </td>
+                </tr>
+                <br>
+            </c:forEach>
+            <br>
+        </table>
+    </div>
+</div >
 
 
-<c:forEach items="${memberList}" var="member">
-    <tr>
-        <td>${member.memberEmail}</td>
-        <td>${member.memberName}</td>
-        <td>${member.memberBirth}</td>
-        <td>${member.memberMobile}</td>
-        <td>
-            <button class="btn btn-primary" onclick="detail_fn('${member.id}')">상세조회</button>
-        </td>
-        <td>
-            <button class="btn btn-danger" onclick="delete_fn('${member.id}')">삭제</button>
-        </td>
-    </tr>
-    <br>
-
-</c:forEach>
-<br>    <br>
-
-<div>
-    <tr>
-        <td>아이디</td>
-        <td>이름</td>
-        <td>이메일</td>
-        <td>생년월일</td>
-        <td>번호</td>
-    </tr>
-
-</div>
-
-<div id=detail>
+<br> <br>
 
 
-</div>
-<br>    <br>    <br>    <br>
+
+    <div class="m-5" id=detail>
+
+
+    </div>
+
+
+
+<br> <br> <br> <br>
 <%@include file="component/footer.jsp" %>
 </body>
 <script>

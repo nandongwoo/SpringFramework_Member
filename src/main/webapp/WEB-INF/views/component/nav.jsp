@@ -25,7 +25,7 @@
   console.log(loginEmail.length);
   if (loginEmail.length != 0){
     // 로그인 됨
-    loginArea.innerHTML = "<a href = '/main'>" +loginEmail + "님 환영해요</a>" +
+    loginArea.innerHTML = "<a href = '/main'>환영합니다(마이페이지)</a>" +
             "<a href='/logout'>logout</a>";
 
   }else {
